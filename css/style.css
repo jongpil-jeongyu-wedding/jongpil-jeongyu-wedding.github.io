@@ -11,6 +11,7 @@ body { font-family: 'Dancing Script', 'Nanum Brush Script', 'Nanum Myeongjo', 'N
 .info .hero p { color:#58595b; font-size:1.2rem; margin-bottom:1em; font-family:'Nanum Myeongjo'; letter-spacing:-2px; }
 .info .hero p em { font-size:1.1rem; }
 .info .info_visual { width:100%; }
+.info .info_visual .counter {border-radius:5%; position: absolute; margin:50 50 0 0; padding: 20px; background:rgba(0, 0, 0, 0.5); color:#fff; font-family:'Anton'; font-weight:800; font-size: 50px;}
 .info .info_visual img { width:100%;  border-radius: 5%;}
 .info .info_ft { padding:1.8em 0; font-size:1.1em; text-align:center; line-height:1.4; background:#F7F5E8; font-family: 'Nanum Myeongjo'; }
 
@@ -21,7 +22,6 @@ body { font-family: 'Dancing Script', 'Nanum Brush Script', 'Nanum Myeongjo', 'N
 .invite .m_txt { padding-bottom:3em; line-height:2; border-bottom:1px solid #d0d4c2;  }
 .invite .hero_tel { text-align:center; padding:2em 0 0; letter-spacing:-1px; }
 .invite .hero_tel p.w_hero { margin-top:.4em; }
-.invite .hero_tel p em.re { font-family: 'YGO_340'; }
 .invite .hero_tel p em.pd { padding:0 .2em; }
 .invite .hero_tel p span { font-size:1.2em; }
 .invite .hero_tel p img { height:2.4em; vertical-align:middle; margin-left:.6em; }
@@ -35,7 +35,7 @@ body { font-family: 'Dancing Script', 'Nanum Brush Script', 'Nanum Myeongjo', 'N
 #gallery a img { width: 100%;}
 #gallery-1 { width: 87%; margin:0% auto; margin-top:0.5em; -webkit-user-select: none; -moz-user-select: none; user-select: none;}
 .wedding-image { margin: 10 40 10 40 !important}
-.wedding-image img {margin: 10 40 10 40; width: 100%;}
+.wedding-image img {width: 100%;}
 
 /*location*/
 .location_wrap { padding:2em 1.4em; font-family: 'YGO_330'; }
