@@ -12,7 +12,7 @@
 	<link rel="shortcut Icon" href="/skin/skin_style/favicon.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=943716"></script>
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
 
@@ -49,17 +49,6 @@ window.onload=function () {
 <body style="width: 100%; margin: 0px;;">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-<style>
-  .guestbook_tb{margin-top:30px; width:100%; }
-  .gb_namespan{color:#6e7c58;font-family:'Noto_B';font-size:13px;}
-  .gb_datespan{color:#6e7c58;font-family:'Noto_R';font-size:13px;}
-  .gb_memotd{color:#58595d;font-family:'Noto_R';font-size:12px;}
-  .gb_mdybtn{color:#6e7c58;font-family:'Noto_B';font-size:12px;}
-  .gb_delbtn{color:#6e7c58;font-family:'Noto_B';font-size:12px;}
-  .gb_linediv{background:#e6e8db;height:1px;width:100%;position:absolute;left:0;bottom:10px;}
-  .gb_btndiv{position:absolute;right:0;bottom:0;padding-left:10px;}
-</style>
-
   <div class="info" style="padding: 10% 0 0;">
     <div class="hero">
       <p style="font-size:20px; letter-spacing: 5px;font-weight:800;">
@@ -69,6 +58,16 @@ window.onload=function () {
       <p>신종필&nbsp;&nbsp;<em>그리고</em>&nbsp;&nbsp;&nbsp;윤정유</p>
     </div>
     <div class="info_visual">
+      <div class="counter"></div>
+      <script>
+          let counter = document.querySelector('.counter');
+          let today = new Date(), //현재 날짜 가져오기
+              dday = new Date("Sep 9,2023, 12:20:00").getTime(), //디데이
+              gap = dday - today,
+              result = Math.floor(gap / (1000 * 60 * 60 * 24));
+          
+          counter.innerHTML = `D-${result}`
+      </script>
       <center><img src="https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_15.jpg" alt="info_visual" style="width:90%"></center>
     </div>
     <div class="info_ft" style="padding: 1.3em 0;">
