@@ -206,7 +206,7 @@
           <h3>오시는 길</h3>
           <p>location</p>
           <div class="innr_map">
-            <div id="map" style="width:auto; height:200px;">
+            <div id="map" style="width:auto; height:300px;">
             <!-- <p class="go_map" style="z-index:200;"><a href="/skin/google_map.html?cu_code=1688706296607">지도보기 &gt;</a></p> -->
             </div>
            
@@ -221,6 +221,9 @@
               
               var markerPosition  = new kakao.maps.LatLng(37.535005, 127.1336272); 
               
+              var zoomControl = new kakao.maps.ZoomControl();
+              map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
               // 마커를 생성합니다
               var marker = new kakao.maps.Marker({
                   position: markerPosition
@@ -228,19 +231,12 @@
               
               // 마커가 지도 위에 표시되도록 설정합니다
               marker.setMap(map);
-              
-              map.setDraggable(false);
-              map.setZoomable(false);
-
-              var zoomControl = new kakao.maps.ZoomControl();
-              map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
             </script>
 
           </div>
           <div class="location_txt">
             <p class="where">강동웨딩KDW 3층 마이더스홀</p>
-            <div class="map_txt" style="margin-top:20px;">
+            <div class="map_txt" style="margin-top:20px; line-height: 1.7;">
               <p>서울특별시 강동구 천호대로 1102 (성내동 199) <br>
               TEL 02-477-7700<br>
               <br>
