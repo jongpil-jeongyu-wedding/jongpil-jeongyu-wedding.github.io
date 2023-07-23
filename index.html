@@ -13,9 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=LIBRARY"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services,clusterer,drawing"></script>
 
 <script>
 
@@ -127,7 +127,7 @@ window.onload=function () {
 		<div class="invite wrap">
 			<h3>마음 전하는 곳</h3>
 			<p>THANK YOU</p>
-			<div id="bank_info" onclick="bank_info_bt()">계좌번호 확인하기</div>
+			<div id="bank_info" onclick="bank_info_bt();">계좌번호 확인하기</div>
 			<div style="height:10px;"></div>
 			<div id="bank_contents">
           농협은행 3021314113111  예금주: 신종필 (신랑)<br>
@@ -184,6 +184,98 @@ $(function(){
     
     map.setDraggable(false);
     map.setZoomable(false);
+
+    (function (window, undefined) {
+    var kakao = {};
+    window.kakao = window.kakao || kakao;
+
+    var uagent = navigator.userAgent.toLocaleLowerCase();
+    if (uagent.search("android") > -1) {
+        kakao.os = "android";
+        if (uagent.search("chrome") > -1) {
+            kakao.browser = "android+chrome";
+        }
+    } else if (uagent.search("iphone") > -1 || uagent.search("ipod") > -1 || uagent.search("ipad") > -1) {
+        kakao.os = "ios";
+    }
+
+    var app = {
+        talk: {
+            base_url: "kakaolink://sendurl?",
+            apiver: "2.0.1",
+            store: {
+                android: "market://details?id=com.kakao.talk",
+                ios: "http://itunes.apple.com/app/id362057947"
+            },
+            package: "com.kakao.talk"
+        },
+        story: {
+            base_url: "storylink://posting?",
+            apiver: "1.0",
+            store: {
+                android: "market://details?id=com.kakao.story",
+                ios: "http://itunes.apple.com/app/id486244601"
+            },
+            package: "com.kakao.story"
+        }
+    };
+
+    kakao.link = function (name) {
+        var link_app = app[name];
+        if (!link_app) return { send: function () {
+            throw "No App exists";
+        }};
+        return {
+            send: function (params) {
+                var _app = this.app;
+                params['apiver'] = _app.apiver;
+                var full_url = _app.base_url + serialized(params);
+
+                var install_block = (function (os) {
+                    return function () {
+                        window.location = _app.store[os];
+                    };
+                })(this.os);
+
+                if (this.os == "ios") {
+                    var timer = setTimeout(install_block, 2 * 1000);
+                    window.addEventListener('pagehide', clearTimer(timer));
+                    window.location = full_url;
+                } else if (this.os == "android") {
+                    if (this.browser == "android+chrome") {
+                        window.location = "intent:" + full_url + "#Intent;package=" + _app.package + ";end;";
+                    } else {
+                        var iframe = document.createElement('iframe');
+                        iframe.style.visibility = 'hidden';
+                        iframe.src = full_url;
+                        iframe.onload = install_block;
+                        document.body.appendChild(iframe);
+                    }
+                }
+            },
+            app: link_app,
+            os: kakao.os,
+            browser: kakao.browser
+        };
+
+        function serialized(params) {
+            var stripped = [];
+            for (var k in params) {
+                if (params.hasOwnProperty(k)) {
+                    stripped.push(k + "=" + encodeURIComponent(params[k]));
+                }
+            }
+            return stripped.join("&");
+        }
+
+        function clearTimer(timer) {
+            return function () {
+                clearTimeout(timer);
+                window.removeEventListener('pagehide', arguments.callee);
+            };
+        }
+    };
+}(window)); 
   </script>
 
     <div class="location_wrap">
@@ -197,9 +289,6 @@ $(function(){
         </div>
         <div class="location_txt">
           <p class="where">강동웨딩KDW 3층 마이더스홀</p>
-          <p class="address">
-            서울특별시 강동구 천호대로 1102 (성내동 199) <br><a href="tel:02-477-7700">02-477-7700</a>
-          </p>
           <div class="map_txt" style="margin-top:20px;">
       		  <p>서울특별시 강동구 천호대로 1102 (성내동 199) <br>
             TEL 02-477-7700<br>
@@ -232,11 +321,12 @@ $(function(){
           <div class="nav_div_left">
             <img src="https://jongpil-jeongyu-wedding.github.io/images/kakaonav_icon_139.jpg" onclick="navi()"><a href="javascript:navi();"></a>
             <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=l7xxf131c69d9bce4925b36cde90c71b8f1f&amp;name=서울특별시 강동구 천호대로 1102 (성내동 199) &amp;lon=127.1336272&amp;lat=37.5350050" target="_blank"><img src="https://jongpil-jeongyu-wedding.github.io/images/tmap_icon_139.jpg"></a>
+            <a href="https://map.naver.com/?menu=location&amp;pinType=place&amp;lat=37.5350050&amp;lng=127.1336272&amp;title=서울특별시 강동구 천호대로 1102 (성내동 199) "><img src="https://jongpil-jeongyu-wedding.github.io/images/naver_icon_139.jpg"></a>
 
           </div>
           <div class="nav_div_right">
             <a href="https://m.map.naver.com/directions/?sname=&amp;sy=&amp;sx=&amp;ename=서울특별시 강동구 천호대로 1102 (성내동 199) &amp;ey=37.5350050&amp;ex=127.1336272"><img src="https://jongpil-jeongyu-wedding.github.io/images/bus_i.png" alt="버스"></a>
-                    <a href="https://m.map.naver.com/subway/subwayLine.nhn?region=1000" target="_blank"><img src="https://jongpil-jeongyu-wedding.github.io/images/subway_i.png" alt="지하철"></a>
+                    <a href="https://m.map.naver.com/subway/subwayLine.nhn?region=1000&arrivalId=548" target="_blank"><img src="https://jongpil-jeongyu-wedding.github.io/images/subway_i.png" alt="지하철"></a>
           </div>
         </div>
       </div>
