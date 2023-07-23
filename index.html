@@ -13,11 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=LIBRARY"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services,clusterer,drawing"></script>
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+   
     <script>
       window.onload=function () {
         document.addEventListener('touchstart',function (event) {
@@ -145,7 +141,7 @@
       <div class="invite wrap">
         <h3>마음 전하는 곳</h3>
         <p>THANK YOU</p>
-        <div id="bank_info" onclick="bank_info_bt();">계좌번호 확인하기</div>
+        <div id="bank_info">계좌번호 확인하기</div>
         <div style="height:10px;"></div>
         <div id="bank_contents">
             <div class="bank_header">신랑측</div>
@@ -195,28 +191,7 @@
         </div>
     </div>
 
-    <script>
-      var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-      var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new kakao.maps.LatLng(37.2617874, 127.0334682), //지도의 중심좌표.
-        level: 4 //지도의 레벨(확대, 축소 정도)
-      };
-        
-      var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-      
-      var markerPosition  = new kakao.maps.LatLng(37.2617874, 127.0334682); 
-      
-      // 마커를 생성합니다
-      var marker = new kakao.maps.Marker({
-          position: markerPosition
-      });
-      
-      // 마커가 지도 위에 표시되도록 설정합니다
-      marker.setMap(map);
-      
-      map.setDraggable(false);
-      map.setZoomable(false);
-    </script>
+    
 
       <div class="location_wrap">
         <div class="location wrap clfix">
@@ -226,6 +201,34 @@
             <div id="map" style="width:auto; height:200px;">
             <!-- <p class="go_map" style="z-index:200;"><a href="/skin/google_map.html?cu_code=1688706296607">지도보기 &gt;</a></p> -->
             </div>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=LIBRARY"></script>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services"></script>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services,clusterer,drawing"></script>
+            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+           <script>
+              var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+              var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new kakao.maps.LatLng(37.2617874, 127.0334682), //지도의 중심좌표.
+                level: 4 //지도의 레벨(확대, 축소 정도)
+              };
+                
+              var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+              
+              var markerPosition  = new kakao.maps.LatLng(37.2617874, 127.0334682); 
+              
+              // 마커를 생성합니다
+              var marker = new kakao.maps.Marker({
+                  position: markerPosition
+              });
+              
+              // 마커가 지도 위에 표시되도록 설정합니다
+              marker.setMap(map);
+              
+              map.setDraggable(false);
+              map.setZoomable(false);
+            </script>
+
           </div>
           <div class="location_txt">
             <p class="where">강동웨딩KDW 3층 마이더스홀</p>

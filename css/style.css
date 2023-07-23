@@ -11,7 +11,7 @@ body { font-family: 'Dancing Script', 'Nanum Brush Script', 'Nanum Myeongjo', 'N
 .info .hero p { color:#58595b; font-size:1.2rem; margin-bottom:1em; font-family:'Nanum Myeongjo'; letter-spacing:-2px; }
 .info .hero p em { font-size:1.1rem; }
 .info .info_visual { width:100%; }
-.info .info_visual .counter {border-radius:5%; position: absolute; top: 300; right: 60; padding: 0 20px 0 20px; background:rgba(0, 0, 0, 0.5); color:#fff; font-family:'Anton'; font-size: 50px;}
+.info .info_visual .counter {border-radius:5%; position: absolute; top: 300; right: 60; padding: 0 20px 0 20px; color:#3b2207; text-shadow: 3px 3px 3px #fff; font-family:'Anton'; font-size: 50px;}
 .info .info_visual img { width:100%;  border-radius: 5%;}
 .info .info_ft { padding:1.8em 0; font-size:1.1em; text-align:center; line-height:1.4; background:#F7F5E8; font-family: 'Nanum Myeongjo'; }
 
