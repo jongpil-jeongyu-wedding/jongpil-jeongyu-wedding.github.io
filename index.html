@@ -34,11 +34,6 @@ window.onload=function () {
 	    lastTouchEnd=now;
 	},false)
 }
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-112827387-2');
 </script>
 
 
@@ -93,7 +88,7 @@ window.onload=function () {
           함께 축복해 주시길 바랍니다.
         </div>
         <style>
-        .parents_divs{ idth:100%;text-align:center;font-family:'Nanum Myeongjo';color:#555;font-size:16px;line-height:30px;letter-spacing: -1px;}
+        .parents_divs{ width:100%;text-align:center;font-family:'Nanum Myeongjo';color:#555;font-size:16px;line-height:30px;letter-spacing: -1px;}
         .parents_divs span{font-family:'Nanum Myeongjo';font-size:15px;color:#555;}
         .parents_divs em{font-family:'YGO_340';font-size:15px;color:#555;}
         .parents_divs img {height: 2.4em; vertical-align: middle; margin-left: .6em;}
@@ -120,7 +115,34 @@ window.onload=function () {
 <style>
   #bank_info {width:90%;height:30px;line-height:30px;background:#fff;border:1px solid #000;margin: 0 auto ;text-align:center;font-size:14px;}
   #bank_contents{display:none;}
+  #bank_contents .bank_header{
+    margin-top: 20px;
+    margin-bottom: 10px;}
+  #bank_contents .bank_num{
+    background: rgba(239, 181, 99, 0.2);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 0 10px 0px 10px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  #bank_contents .bank_btn{
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    border: 0px;
+    border-radius: 5px;
+    background: #CEA47C;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-family: Nanum Myeongjo;
+    text-align: left;
+    font-weight:700;
+}
 </style>
+
 
 <div class="content" style="padding-top: 0px;">
 	<div class="invite_wrap ">
@@ -130,15 +152,23 @@ window.onload=function () {
 			<div id="bank_info" onclick="bank_info_bt();">계좌번호 확인하기</div>
 			<div style="height:10px;"></div>
 			<div id="bank_contents">
-          농협은행 3021314113111  예금주: 신종필 (신랑)<br>
-          농협은행 3021314113111  예금주: 신종필 (신랑)<br>
-          농협은행 3021314113111  예금주: 신종필 (신랑)<br>
-          <br>
-          <br>
-          <br>
-          신한은행 110295666510   예금주: 윤정유 (신부)<br>
-          신한은행 110295666510   예금주: 윤정유 (신부)<br>
-          신한은행 110295666510   예금주: 윤정유 (신부)<br>
+          <div class="bank_header">신랑측</div>
+          <div class="bank_num">
+            <p>농협은행 3021314113111 (신종필)</p><button class="bank_btn" id="농협은행 3021314113111">복사하기</button>
+          </div>
+          <div class="bank_num">
+            <p>국민은행 229210934431 (신일성)</p><button class="bank_btn" id="국민은행 229210934431">복사하기</button>
+          </div>
+          <div class="bank_num">
+            <p>농협은행 66602024360 (정천순)</p><button class="bank_btn" id="농협은행 66602024360">복사하기</button>
+        </div>
+          <div class="bank_header">신부측</div>
+          <div class="bank_num">
+              <p>신한은행 110295666510 (윤정유)</p><button class="bank_btn" id="신한은행 110295666510">복사하기</button>
+          </div>
+          <div class="bank_num">
+              <p>신한은행 110295666510 (김연옥)</p><button class="bank_btn" id="신한은행 110295666510">복사하기</button>
+          </div>
       </div>
 		</div>
 	</div>
@@ -150,6 +180,13 @@ $(function(){
 		$("#bank_contents").slideToggle(300);
 	});
 });
+
+$(".bank_num").on("click", function(e) {
+    let account = e.target.id;
+    window.navigator.clipboard.writeText(account).then(() => {
+      alert("복사되었습니다.");
+    });
+})
 </script>
 
   <div class="gallery_wrap">
@@ -184,98 +221,6 @@ $(function(){
     
     map.setDraggable(false);
     map.setZoomable(false);
-
-    (function (window, undefined) {
-    var kakao = {};
-    window.kakao = window.kakao || kakao;
-
-    var uagent = navigator.userAgent.toLocaleLowerCase();
-    if (uagent.search("android") > -1) {
-        kakao.os = "android";
-        if (uagent.search("chrome") > -1) {
-            kakao.browser = "android+chrome";
-        }
-    } else if (uagent.search("iphone") > -1 || uagent.search("ipod") > -1 || uagent.search("ipad") > -1) {
-        kakao.os = "ios";
-    }
-
-    var app = {
-        talk: {
-            base_url: "kakaolink://sendurl?",
-            apiver: "2.0.1",
-            store: {
-                android: "market://details?id=com.kakao.talk",
-                ios: "http://itunes.apple.com/app/id362057947"
-            },
-            package: "com.kakao.talk"
-        },
-        story: {
-            base_url: "storylink://posting?",
-            apiver: "1.0",
-            store: {
-                android: "market://details?id=com.kakao.story",
-                ios: "http://itunes.apple.com/app/id486244601"
-            },
-            package: "com.kakao.story"
-        }
-    };
-
-    kakao.link = function (name) {
-        var link_app = app[name];
-        if (!link_app) return { send: function () {
-            throw "No App exists";
-        }};
-        return {
-            send: function (params) {
-                var _app = this.app;
-                params['apiver'] = _app.apiver;
-                var full_url = _app.base_url + serialized(params);
-
-                var install_block = (function (os) {
-                    return function () {
-                        window.location = _app.store[os];
-                    };
-                })(this.os);
-
-                if (this.os == "ios") {
-                    var timer = setTimeout(install_block, 2 * 1000);
-                    window.addEventListener('pagehide', clearTimer(timer));
-                    window.location = full_url;
-                } else if (this.os == "android") {
-                    if (this.browser == "android+chrome") {
-                        window.location = "intent:" + full_url + "#Intent;package=" + _app.package + ";end;";
-                    } else {
-                        var iframe = document.createElement('iframe');
-                        iframe.style.visibility = 'hidden';
-                        iframe.src = full_url;
-                        iframe.onload = install_block;
-                        document.body.appendChild(iframe);
-                    }
-                }
-            },
-            app: link_app,
-            os: kakao.os,
-            browser: kakao.browser
-        };
-
-        function serialized(params) {
-            var stripped = [];
-            for (var k in params) {
-                if (params.hasOwnProperty(k)) {
-                    stripped.push(k + "=" + encodeURIComponent(params[k]));
-                }
-            }
-            return stripped.join("&");
-        }
-
-        function clearTimer(timer) {
-            return function () {
-                clearTimeout(timer);
-                window.removeEventListener('pagehide', arguments.callee);
-            };
-        }
-    };
-}(window)); 
   </script>
 
     <div class="location_wrap">
@@ -284,7 +229,7 @@ $(function(){
         <p>location</p>
         <div class="innr_map">
           <div id="map" style="width:auto; height:200px;">
-				  <p class="go_map" style="z-index:200;"><a href="/skin/google_map.html?cu_code=1688706296607">지도보기 &gt;</a></p>
+				  <!-- <p class="go_map" style="z-index:200;"><a href="/skin/google_map.html?cu_code=1688706296607">지도보기 &gt;</a></p> -->
           </div>
         </div>
         <div class="location_txt">
