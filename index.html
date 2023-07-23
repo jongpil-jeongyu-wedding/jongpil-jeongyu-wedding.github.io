@@ -13,6 +13,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=LIBRARY"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services,clusterer,drawing"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+    <script>
+      Kakao.init('4cdb6734986788c0a1b8e7004b90059a');
+    </script>
    
     <script>
       window.onload=function () {
@@ -201,11 +209,7 @@
             <div id="map" style="width:auto; height:200px;">
             <!-- <p class="go_map" style="z-index:200;"><a href="/skin/google_map.html?cu_code=1688706296607">지도보기 &gt;</a></p> -->
             </div>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=LIBRARY"></script>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services"></script>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services,clusterer,drawing"></script>
-            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+           
            <script>
               var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
               var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -272,6 +276,23 @@
                       <a href="https://m.map.naver.com/subway/subwayLine.nhn?region=1000&arrivalId=548" target="_blank"><img src="https://jongpil-jeongyu-wedding.github.io/images/subway_i.png" alt="지하철"></a>
             </div>
           </div>
+
+          <script type="text/javascript">
+            //<![CDATA[
+              // 사용할 앱의 JavaScript 키를 설정해 주세요.
+          
+              // 카카오 로그인 버튼을 생성합니다.
+              function navi(){
+                  Kakao.Navi.start({
+                      name: "서울특별시 강동구 천호대로 1102 (성내동 199) ",
+                      x: 127.1336272 ,
+                      y: 37.5350050,
+                      coordType: 'wgs84'
+                  });
+              }
+            //]]>
+          </script>
+
         </div>
       </div>
       <div class="footer">
