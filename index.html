@@ -8,13 +8,14 @@
   <meta property="og:title" content="신종필♡윤정유">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_11.jpg">	
-  <meta property="og:description" content="우리 결혼합니다.">	<link rel="apple-touch-icon-precomposed" href="/skin/skin_style/favicon.png">
-	<link rel="shortcut Icon" href="/skin/skin_style/favicon.png">
+  <meta property="og:description" content="우리 결혼합니다.">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
-  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 
 <script>
 
@@ -160,6 +161,7 @@ $(function(){
         </div>
       </div>
   </div>
+
   <script>
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -249,83 +251,4 @@ $(function(){
     </div>
   </div>
   <div class="out_ft"></div>
-
-
-
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-<script type="text/javascript">
-Kakao.init('4cdb6734986788c0a1b8e7004b90059a');
-function KakaoLink() {
-	Kakao.Link.sendDefault({
-		//objectType: 'feed',
-		objectType: 'location',
-		address: "서울특별시 강동구 천호대로 1102 (성내동 199)",
-		
-		addressTitle: "",
-		content: {
-			title: "결혼합니다\n[신종필♡윤정유]",
-			description: "2023년 09월 09일 12시 20분\n강동웨딩KDW 3층 마이더스홀",
-			imageUrl: "https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_11_2.jpg",
-			imageWidth : 1320,
-			imageHeight : 693,
-			link: {
-				mobileWebUrl: 'https://jongpil-jeongyu-wedding.github.io',
-				webUrl: 'https://jongpil-jeongyu-wedding.github.io'
-			},
-		},
-/*
-		social: {
-			likeCount: 286,
-			commentCount: 45,
-			sharedCount: 845
-		},
-*/
-
-		buttons: [{
-				title: '초대장 바로가기',
-				link: {
-				mobileWebUrl: 'https://jongpil-jeongyu-wedding.github.io',
-				webUrl: 'https://jongpil-jeongyu-wedding.github.io'
-			}
-		}]
-	});
-}
-
-function KakaoNavi() {
-	Kakao.Navi.start({
-		name: "강동웨딩KDW",
-		x: 127.1336272,
-		y: 37.5350050,
-		coordType: 'wgs84'
-	});
-}
-function sendFaceBook(title,url) {
-	document.location.href = "http://www.facebook.com/sharer.php?u=" + url + "&t=" + encodeURIComponent(title);
-}
-$(function(){
-	$('.player_btn , .player_pbtn').click(function(){
-		if($(this).attr('href')){
-			var a_url = $(this).attr('href');
-		}else{
-			var a_url = $(this).parents('a').attr('href');
-		}
-		
-		var url_arr = a_url.split('/');
-		if(url_arr.pop().substr(0 , 1) == 'p'){
-			type = 1;
-		}else{
-			type = 0;	
-		}
-		
-		$.ajax({
-			url : '/_tongji_movie.php' ,
-			type : 'post' ,
-			async : false ,
-			data : 'type=' + type + '&cu_code=1688706296607&skin=m001'
-		});
-
-	});
-});
-</script>
 </body></html>
