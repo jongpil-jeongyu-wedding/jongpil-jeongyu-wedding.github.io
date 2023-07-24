@@ -54,17 +54,19 @@
         <p>신종필&nbsp;&nbsp;<em>그리고</em>&nbsp;&nbsp;&nbsp;윤정유</p>
       </div>
       <div class="info_visual">
-        <div class="counter"></div>
-        <script>
-            let counter = document.querySelector('.counter');
-            let today = new Date(), //현재 날짜 가져오기
-                dday = new Date("Sep 9,2023, 12:20:00").getTime(), //디데이
-                gap = dday - today,
-                result = Math.floor(gap / (1000 * 60 * 60 * 24));
-            
-            counter.innerHTML = `D-${result}`
-        </script>
-        <center><img src="https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_15.jpg" alt="info_visual" style="width:90%"></center>
+        <center>
+          <div class="counter"></div>
+          <script>
+              let counter = document.querySelector('.counter');
+              let today = new Date(), //현재 날짜 가져오기
+                  dday = new Date("Sep 9,2023, 12:20:00").getTime(), //디데이
+                  gap = dday - today,
+                  result = Math.floor(gap / (1000 * 60 * 60 * 24));
+              
+              counter.innerHTML = `D-${result}`
+          </script>
+          <img src="https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_15.jpg" alt="info_visual" style="width:90%">
+        </center>
       </div>
       <div class="info_ft" style="padding: 1.3em 0;">
         <p>2023년 09월 09일(토) 낮 12:20</p>
@@ -154,20 +156,23 @@
         <div id="bank_contents">
             <div class="bank_header">신랑측</div>
             <div class="bank_num">
-              <p>농협은행 3021314113111 (신종필)</p><button class="bank_btn" id="농협은행 3021314113111">복사하기</button>
+              <p>농협은행 3021314113111 (신종필)</p><button class="bank_btn" id="농협은행 3021314113111">복사</button>
             </div>
             <div class="bank_num">
-              <p>국민은행 229210934431 (신일성)</p><button class="bank_btn" id="국민은행 229210934431">복사하기</button>
+              <p>국민은행 229210934431 (신일성)</p><button class="bank_btn" id="국민은행 229210934431">복사</button>
             </div>
             <div class="bank_num">
-              <p>농협은행 66602024360 (정천순)</p><button class="bank_btn" id="농협은행 66602024360">복사하기</button>
+              <p>농협은행 66602024360 (정천순)</p><button class="bank_btn" id="농협은행 66602024360">복사</button>
           </div>
             <div class="bank_header">신부측</div>
             <div class="bank_num">
-                <p>신한은행 110295666510 (윤정유)</p><button class="bank_btn" id="신한은행 110295666510">복사하기</button>
+                <p>신한은행 110295666510 (윤정유)</p><button class="bank_btn" id="신한은행 110295666510">복사</button>
             </div>
             <div class="bank_num">
-                <p>신한은행 110295666510 (김연옥)</p><button class="bank_btn" id="신한은행 110295666510">복사하기</button>
+              <p>신한은행 110295666510 (윤경수)</p><button class="bank_btn" id="신한은행 110295666510">복사</button>
+            </div>
+            <div class="bank_num">
+              <p>새마을금고 1004100019602 (김연옥)</p><button class="bank_btn" id="새마을금고 1004100019602">복사</button>
             </div>
         </div>
       </div>
@@ -183,9 +188,18 @@
 
   $(".bank_num").on("click", function(e) {
       let account = e.target.id;
-      window.navigator.clipboard.writeText(account).then(() => {
-        alert("복사되었습니다.");
-      });
+      const $input = document.createElement('input')
+      $input.value = account
+      $input.style.position = 'absolute'
+      $input.style.left = '-999px'
+      document.body.appendChild($input)
+      $input.select()
+
+      document.execCommand('copy')
+      document.body.removeChild($input)
+
+      alert("복사되었습니다.");
+    
   })
   </script>
 
@@ -298,12 +312,49 @@
       <div class="footer">
         <div class="f_sns">
           <ul style="padding-left: 0px;">
-            <li><a href="javascript:KakaoLink();"><img src="https://jongpil-jeongyu-wedding.github.io/images/kakao_i.png" alt="카카오"></a></li>
+            <li><a id="kakao-link-btn" href="javascript:kakaoShare()">
+              <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+            </a></li>
           </ul>
           <span>save the date</span>
         </div>
       </div>
+      <!-- kakao sdk 호출 -->
+      <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+      <script type="text/javascript">
+        // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('4cdb6734986788c0a1b8e7004b90059a');
+
+        function kakaoShare() {
+          Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+              title: '신종필♡윤정유',
+              description: '우리 결혼합니다.',
+              imageUrl: 'https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_11.jpg',
+              link: {
+                mobileWebUrl: 'https://jongpil-jeongyu-wedding.github.io',
+                webUrl: 'https://jongpil-jeongyu-wedding.github.io',
+              },
+            },
+            buttons: [
+              {
+                title: '웹으로 보기',
+                link: {
+                  mobileWebUrl: 'https://jongpil-jeongyu-wedding.github.io',
+                  webUrl: 'https://jongpil-jeongyu-wedding.github.io',
+                },
+              },
+            ],
+            // 카카오톡 미설치 시 카카오톡 설치 경로이동
+            installTalk: true,
+          })
+        }
+      </script>
     </div>
     <div class="out_ft"></div>
   </body>
 </html>
+
+
