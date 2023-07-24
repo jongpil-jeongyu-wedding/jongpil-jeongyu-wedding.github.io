@@ -1,5 +1,5 @@
 /*common*/
-body { font-family: 'Dancing Script', 'Nanum Brush Script', 'Nanum Myeongjo', 'Nanum Pen Script', 'Noto Serif KR', 'Open Sans', 'Stylish', sans-serif, cursive;}
+body { font-family: 'Dancing Script', 'Nanum Myeongjo', sans-serif, cursive;}
 .wrap > h3 { font-size:1.4em; font-family: 'Nanum Myeongjo'; color:#3b2207; font-weight:normal; }
 .wrap > p { font-size:.8rem; text-transform:uppercase; letter-spacing:5px; color:#a4a9a4; font-family: 'Dancing Script'; margin-bottom:2em; }
 .out_ft { width:100%; height:2em; background:#fffef7; }
@@ -11,7 +11,7 @@ body { font-family: 'Dancing Script', 'Nanum Brush Script', 'Nanum Myeongjo', 'N
 .info .hero p { color:#58595b; font-size:1.2rem; margin-bottom:1em; font-family:'Nanum Myeongjo'; letter-spacing:-2px; }
 .info .hero p em { font-size:1.1rem; }
 .info .info_visual { width:100%; }
-.info .info_visual .counter {width:100%; position:absolute; margin-top: 110px; color:#3b2207; text-shadow: 3px 3px 3px #fff; font-family:'Anton'; font-size: 40px;}
+.info .info_visual .counter {width:100%; position:absolute; margin-top: 30px; left: 60px; color:#3b2207; text-shadow: 3px 3px 3px #fff; font-family:'Anton'; font-size: 40px;}
 .info .info_visual img { width:100%;  border-radius: 5%;}
 .info .info_ft { padding:1.8em 0; font-size:1.1em; text-align:center; line-height:1.4; background:#F7F5E8; font-family: 'Nanum Myeongjo'; }
 

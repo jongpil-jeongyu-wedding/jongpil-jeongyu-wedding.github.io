@@ -12,7 +12,7 @@
     <meta property="og:description" content="우리 결혼합니다.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400;700&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Open+Sans:ital,wght@0,300;1,300&family=Stylish&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=LIBRARY"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4cdb6734986788c0a1b8e7004b90059a&libraries=services"></script>
@@ -23,6 +23,7 @@
     </script>
    
     <script>
+      
       window.onload=function () {
         document.addEventListener('touchstart',function (event) {
             if(event.touches.length>1){
@@ -37,6 +38,8 @@
             }
             lastTouchEnd=now;
         },false)
+
+        preload();
       }
     </script>
   </head>
@@ -54,8 +57,7 @@
         <p>신종필&nbsp;&nbsp;<em>그리고</em>&nbsp;&nbsp;&nbsp;윤정유</p>
       </div>
       <div class="info_visual">
-        <center>
-          <div class="counter"></div>
+        <div class="counter"></div>
           <script>
               let counter = document.querySelector('.counter');
               let today = new Date(), //현재 날짜 가져오기
@@ -65,6 +67,8 @@
               
               counter.innerHTML = `D-${result}`
           </script>
+        <center>
+          
           <img src="https://jongpil-jeongyu-wedding.github.io/images/KakaoTalk_20230718_191310384_15.jpg" alt="info_visual" style="width:90%">
         </center>
       </div>
@@ -180,6 +184,35 @@
   </div>
 
   <script>
+    function preload (imageArray) {
+    let n = imageArray.length;
+    for (let i = 0; i < n; i++) {
+        let img = new Image();
+        img.src = imageArray[i];
+    }
+}
+
+preload([
+      "/images/KakaoTalk_20230718_191310384_04.jpg",
+      "/images/KakaoTalk_20230718_191310384_05.jpg",
+      "/images/KakaoTalk_20230718_191310384_02.jpg",
+      "/images/KakaoTalk_20230718_191310384_09.jpg",
+      "/images/KakaoTalk_20230718_191310384_03.jpg",
+      "/images/KakaoTalk_20230718_191310384_01.jpg",
+      "/images/KakaoTalk_20230718_191310384.jpg",
+      "/images/KakaoTalk_20230718_191310384_11.jpg",
+      "/images/KakaoTalk_20230718_191310384_07.jpg",
+      "/images/KakaoTalk_20230718_191310384_14.jpg",
+      "/images/KakaoTalk_20230718_191310384_13.jpg",
+      "/images/KakaoTalk_20230718_191310384_12.jpg",
+      "/images/KakaoTalk_20230718_191310384_06.jpg",
+      "/images/KakaoTalk_20230718_191310384_08.jpg",
+      "/images/KakaoTalk_20230718_191310384_10.jpg",
+      "/images/KakaoTalk_20230718_191310384_15.jpg"
+])
+
+   
+
   $(function(){
     $("#bank_info").click(function(){
       $("#bank_contents").slideToggle(300);
@@ -312,9 +345,7 @@
       <div class="footer">
         <div class="f_sns">
           <ul style="padding-left: 0px;">
-            <li><a id="kakao-link-btn" href="javascript:kakaoShare()">
-              <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-            </a></li>
+            <li><a href="javascript:kakaoShare();"><img src="https://jongpil-jeongyu-wedding.github.io/images/kakao_i.png" alt="카카오"></a></li>
           </ul>
           <span>save the date</span>
         </div>
